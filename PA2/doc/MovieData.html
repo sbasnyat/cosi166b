@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class MovieData - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-load_test">#load_test</a>
+    
+    <li ><a href="#method-i-load_train">#load_train</a>
+    
+    <li ><a href="#method-i-movies">#movies</a>
+    
+    <li ><a href="#method-i-predict">#predict</a>
+    
+    <li ><a href="#method-i-rating">#rating</a>
+    
+    <li ><a href="#method-i-run_test">#run_test</a>
+    
+    <li ><a href="#method-i-viewers">#viewers</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-MovieData">
+  <h1 id="class-MovieData" class="class">
+    class MovieData
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>constructor, if one parameter is passed, it takes path to the folder
+containing the movie data, optionally if two arguments are passed, the
+first is taken as path to folder and second symbol to specify a particular
+training/test pair</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">train_test_h</span> = {<span class="ruby-value">:u1</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;u1.base&quot;</span>,<span class="ruby-string">&quot;u1.test&quot;</span>], 
+                                        <span class="ruby-value">:u2</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;u2.base&quot;</span>,<span class="ruby-string">&quot;u2.test&quot;</span>],
+                                        <span class="ruby-value">:u3</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;u3.base&quot;</span>,<span class="ruby-string">&quot;u3.test&quot;</span>],
+                                        <span class="ruby-value">:u4</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;u4.base&quot;</span>,<span class="ruby-string">&quot;u4.test&quot;</span>],
+                                        <span class="ruby-value">:u5</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;u5.base&quot;</span>,<span class="ruby-string">&quot;u5.test&quot;</span>],
+                                        <span class="ruby-value">:ua</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;ua.base&quot;</span>,<span class="ruby-string">&quot;ua.test&quot;</span>],
+                                        <span class="ruby-value">:ub</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;ub.base&quot;</span>,<span class="ruby-string">&quot;ub.test&quot;</span>] }
+        <span class="ruby-identifier">foldername</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+
+        <span class="ruby-comment"># @train_umr_h stands for training user movie rating hash and is a hash table that stores each line of data of training set in the form user_id as key and its </span>
+        <span class="ruby-comment"># value is another hash table with key movie id and value rating</span>
+        <span class="ruby-comment"># @train_mur_h stands for training movie user rating hash and is a hash table that stores each line of data in the training set in the form movie-id as key and its </span>
+        <span class="ruby-comment"># value is another hash table with key user_id and value rating</span>
+        <span class="ruby-comment"># @test_umr_arr stands for test user movie rating array and is 2D array i.e. an array of arrays in the form [user_id, movie_id, rating] for each line of test data</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">train_filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">foldername</span>,<span class="ruby-string">&quot;u.data&quot;</span>)
+                <span class="ruby-ivar">@test_umr_arr</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">train_test_pair</span> = <span class="ruby-identifier">train_test_h</span>[<span class="ruby-identifier">args</span>[<span class="ruby-value">1</span>]]
+                <span class="ruby-identifier">train_filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">foldername</span>,<span class="ruby-identifier">train_test_pair</span>[<span class="ruby-value">0</span>])
+                <span class="ruby-identifier">test_filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">foldername</span>,<span class="ruby-identifier">train_test_pair</span>[<span class="ruby-value">1</span>])
+                <span class="ruby-ivar">@test_umr_arr</span> = <span class="ruby-identifier">load_test</span>(<span class="ruby-identifier">test_filename</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-ivar">@train_umr_h</span>, <span class="ruby-ivar">@train_mur_h</span> = <span class="ruby-identifier">load_train</span>(<span class="ruby-identifier">train_filename</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-load_test" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_test</span><span
+            class="method-args">(test_filename)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this method reads the test dataset and stores each line in a 2D array i.e
+an array of arrays in the form [user_id, movie_id, rating] and returns it</p>
+          
+          
+
+          
+          <div class="method-source-code" id="load_test-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_test</span>(<span class="ruby-identifier">test_filename</span>)
+        <span class="ruby-identifier">test_data</span> = <span class="ruby-identifier">open</span>(<span class="ruby-identifier">test_filename</span>).<span class="ruby-identifier">read</span>
+        <span class="ruby-identifier">umr_arr</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">test_data</span>.<span class="ruby-identifier">each_line</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">data</span>=<span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; &quot;</span>)
+                <span class="ruby-identifier">user_id</span>=<span class="ruby-identifier">data</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">movie_id</span>=<span class="ruby-identifier">data</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">rate</span>=<span class="ruby-identifier">data</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">umr_arr</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">movie_id</span>, <span class="ruby-identifier">rate</span>])
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">umr_arr</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-load_train" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">load_train</span><span
+            class="method-args">(train_filename)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this method reads the training dataset line by line, stores it in two hash
+table forms and returns the two hash tables</p>
+          
+          
+
+          
+          <div class="method-source-code" id="load_train-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_train</span>(<span class="ruby-identifier">train_filename</span>)
+        <span class="ruby-identifier">train_data</span> = <span class="ruby-identifier">open</span>(<span class="ruby-identifier">train_filename</span>).<span class="ruby-identifier">read</span>
+        
+        <span class="ruby-identifier">umr_h</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">mur_h</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+
+        <span class="ruby-identifier">train_data</span>.<span class="ruby-identifier">each_line</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">data</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; &quot;</span>)
+                <span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">data</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">movie_id</span> = <span class="ruby-identifier">data</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+                <span class="ruby-identifier">rate</span> = <span class="ruby-identifier">data</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+
+                <span class="ruby-comment"># for a particular key, it checks if it exists, if not creates a new hash table at that key</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">umr_h</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">user_id</span>)
+                        <span class="ruby-identifier">umr_h</span>[<span class="ruby-identifier">user_id</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">umr_h</span> [<span class="ruby-identifier">user_id</span>] [<span class="ruby-identifier">movie_id</span>] = <span class="ruby-identifier">rate</span>
+
+                <span class="ruby-comment"># for a particular key, it checks if it exists, if not creates a new hash table at that key</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">mur_h</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">movie_id</span>)
+                        <span class="ruby-identifier">mur_h</span>[<span class="ruby-identifier">movie_id</span>] = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">mur_h</span> [<span class="ruby-identifier">movie_id</span>][<span class="ruby-identifier">user_id</span>] = <span class="ruby-identifier">rate</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">umr_h</span>, <span class="ruby-identifier">mur_h</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-movies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">movies</span><span
+            class="method-args">(u)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this method returns the array of movies that user u has watched and 0 if
+the user id cannot be found in the dataset</p>
+          
+          
+
+          
+          <div class="method-source-code" id="movies-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">movies</span>(<span class="ruby-identifier">u</span>)
+
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@train_umr_h</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">u</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-ivar">@train_umr_h</span>[<span class="ruby-identifier">u</span>].<span class="ruby-identifier">keys</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-predict" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">predict</span><span
+            class="method-args">(u,m)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>this method returns a floating point number between 1.0 and 5.0 as an estimate of what user u would rate movie m</pre>
+
+<p>prediction algorithm sees 10 the users who have watched the movie and
+checks which of them have watched the most  common movies among the first
+20 movies watched by the users with user u, and then returns the rating the
+user gave the movie m</p>
+          
+          
+
+          
+          <div class="method-source-code" id="predict-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">predict</span>(<span class="ruby-identifier">u</span>,<span class="ruby-identifier">m</span>)
+        <span class="ruby-identifier">hash</span>=<span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">viewers</span>(<span class="ruby-identifier">m</span>)<span class="ruby-operator">==</span><span class="ruby-value">0</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">ten_viewers</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">viewers</span>(<span class="ruby-identifier">m</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">10</span>])
+
+                <span class="ruby-identifier">ten_viewers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user!</span>=<span class="ruby-identifier">u</span>
+                                <span class="ruby-identifier">num_common_movies</span>=(<span class="ruby-identifier">movies</span>(<span class="ruby-identifier">u</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">19</span>] <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">movies</span>(<span class="ruby-identifier">user</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">19</span>]).<span class="ruby-identifier">length</span>
+                                <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">num_common_movies</span>]=<span class="ruby-identifier">user</span>
+                        <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">end</span> 
+
+        <span class="ruby-comment">#finds the user out of the ten viewers who has the maximum number of movies watched in common with our user u and returns the rating that user gave to movie m</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">rating</span>(<span class="ruby-identifier">hash</span>[<span class="ruby-identifier">hash</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">max</span>],<span class="ruby-identifier">m</span>)
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-rating" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">rating</span><span
+            class="method-args">(u,m)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this method returns the rating that user u gave movie m in the training
+set, and 0 if user u did not rate movie m</p>
+          
+          
+
+          
+          <div class="method-source-code" id="rating-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rating</span>(<span class="ruby-identifier">u</span>,<span class="ruby-identifier">m</span>) 
+
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@train_umr_h</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">u</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@train_umr_h</span>[<span class="ruby-identifier">u</span>].<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">m</span>) 
+                        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@train_umr_h</span>[<span class="ruby-identifier">u</span>][<span class="ruby-identifier">m</span>]
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-run_test" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run_test</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>runs the predict method on the first something number of ratings in the
+test set as specified in the parameter and returns a <a
+href="MovieTest.html">MovieTest</a> object containing the results. If the
+parameter is omitted, all of the tests will be run.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="run_test-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run_test</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">k</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+                <span class="ruby-identifier">ratinglist</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@test_umr_arr</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">k</span>])
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">ratinglist</span>=<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@test_umr_arr</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># now finds the prediction rating from the predict function and pushes it into the array </span>
+        <span class="ruby-identifier">ratinglist</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>             
+                <span class="ruby-identifier">predicted</span>= <span class="ruby-identifier">predict</span>(<span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">line</span>[<span class="ruby-value">1</span>])
+                <span class="ruby-identifier">line</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">predicted</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># creates an instance of class MovieTest and passes the ratinglist as parameter     </span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">MovieTest</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ratinglist</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-viewers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">viewers</span><span
+            class="method-args">(m)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this method returns the array of users that have seen movie m and 0 if the
+movie id cannot be found in the dataset</p>
+          
+          
+
+          
+          <div class="method-source-code" id="viewers-source">
+            <pre><span class="ruby-comment"># File MovieData.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">viewers</span>(<span class="ruby-identifier">m</span>)
+
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@train_mur_h</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">m</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-ivar">@train_mur_h</span>[<span class="ruby-identifier">m</span>].<span class="ruby-identifier">keys</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
