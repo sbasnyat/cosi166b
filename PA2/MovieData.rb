@@ -110,26 +110,34 @@ class MovieData
 	end
 
 	# this method returns a floating point number between 1.0 and 5.0 as an estimate of what user u would rate movie m
-	#prediction algorithm sees 10 the users who have watched the movie and checks which of them have watched the most 
-	#common movies among the first 20 movies watched by the users with user u, and then returns the rating the user gave the movie m 
+	# prediction algorithm sees 10 the users who have watched the movie and checks which of them have watched the most 
+	# common movies among the first 20 movies watched by the users with user u, and then returns the rating the user gave the movie m 
 	def predict(u,m)
 		hash=Hash.new
-		
-		if viewers(m)==0
+		viewers_m = viewers(m)
+		movies_u = movies(u)
+
+		if (viewers_m == 0 || viewers_m.length < 20) && (movies_u == 0 || movies_u.length < 20)
 			return 0
+		elsif viewers_m == 0 || viewers_m.length < 20 
+			sum = 0
+			movies(u)[0..29].each do |mov|
+				sum += rating(u,mov)
+			end
+			return sum/20
 		else
-			ten_viewers=Array.new(viewers(m)[0..10])
+			ten_viewers=Array.new(viewers_m[0..9])
 
 			ten_viewers.each do |user|
 			
-				if user!=u
-					num_common_movies=(movies(u)[0..19] & movies(user)[0..19]).length
+				if user!=u && movies(user).length >= 50
+					num_common_movies=(movies_u & movies(user)[0..49]).length
 					hash[num_common_movies]=user
 				end
 
 			end 
 
-		#finds the user out of the ten viewers who has the maximum number of movies watched in common with our user u and returns the rating that user gave to movie m
+		#finds the user out of the viewers who has the maximum number of movies watched in common with our user u and returns the rating that user gave to movie m
 			return rating(hash[hash.keys.max],m)
 		end
 
@@ -202,11 +210,10 @@ class MovieTest
 
 	# this method returns the root mean square error of the prediction
 	def rms
-		mean_ = mean
 		sum=0
 
 		@error.each do |error|
-			sum += ((error - mean_ ) ** 2)
+			sum += (error) ** 2
 		end
 
 		return Math.sqrt(sum.to_f/@length)
@@ -233,9 +240,12 @@ obj=MovieData.new("ml-100k", :u2)
 
 #puts obj.viewers(100)
 
-t=obj.run_test(100)
-t.to_a
-puts t.rms
+#t=obj.run_test(2500)
+#puts t.mean
+#puts t.stddev
+#puts t.rms
+#t.to_a
+#puts t.rms
 
 
 
