@@ -1,0 +1,15 @@
+<%= form_tag(action: "search", method: "post") do %>
+ <%= label_tag(:search, "Search:") %>
+ <%= text_field_tag(:search) %>
+ <%= submit_tag("Search") %>
+<% end %>
+
+
+<ul>
+   <% @items.each do |item| %>
+   <% item_title = item.title%>
+ <li><%= link_to item_title, item_path(item) %></li>
+
+
+ <% end %>
+</ul>
