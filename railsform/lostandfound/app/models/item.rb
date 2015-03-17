@@ -4,4 +4,6 @@ class Item < ActiveRecord::Base
 		where("title like?", "%#{search}%")
 	end
 
+	belongs_to :type
+
 end

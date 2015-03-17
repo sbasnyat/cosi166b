@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :types
+
  resources :items do
   collection do
     get 'search'
