@@ -1,14 +1,24 @@
-<%= form_tag(action: "search", method: "post") do %>
- <%= label_tag(:search, "Search:") %>
- <%= text_field_tag(:search) %>
- <%= submit_tag("Search") %>
+
+<br>
+<%= form_tag(action: "search", method: "post", class: "form") do %>
+ <%= text_field_tag(:search, " ",class: "form-control") %> <br>
+
+  <select typeOfItem="type_id">
+    <%= @types.each do |type| %>
+       <option value="<%= type.id %>"><%= type.title %></option>
+    <% end %>
+ </select>
+
+ <%= submit_tag("Search", class: "btn btn-default") %> 
 <% end %>
 
 
 <ul>
+	<br>
    <% @items.each do |item| %>  
  <li><%= link_to item.title, item_path(item) %></li>
-
-
  <% end %>
 </ul>
+
+
+
