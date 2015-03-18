@@ -1,0 +1,23 @@
+<div class="col-md-offset-1">
+<br>
+<%= form_tag(do_search_items_path, method: "get", class: "form") do %>
+ <%= text_field_tag(:search) %> 
+
+ <%= select_tag(:type_id, 
+              options_for_select(@types_array)) %>
+
+  <%= select_tag(:and_or, 
+              options_for_select(
+              [['All of these conditions (AND)', "AND"], 
+               ['Any of these conditions (OR)', "OR"]
+              ])) %>
+
+ </select>
+
+ <%= submit_tag("Search", class: "btn btn-default") %> 
+
+<% end %>
+
+
+
+
