@@ -1,0 +1,21 @@
+  <h2>Search Results</h2>
+
+<%if @items.nil? || @items.length == 0%>
+
+  <p>No Matches Found</p>
+
+<% else %>
+  <p><%= @items.length %> matches found</p>
+
+  <ul>
+	<br>
+   <% @items.each do |item| %>  
+ <li><%= link_to item.title, item_path(item) %></li>
+ <% end %>
+</ul>
+
+
+</div>
+
+
+<% end %>

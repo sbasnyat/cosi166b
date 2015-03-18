@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  resources :items do
   collection do
     get 'search'
-    post 'search'
+    get 'do_search'
   end
  end
 

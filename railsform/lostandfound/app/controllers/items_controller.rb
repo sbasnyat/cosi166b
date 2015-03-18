@@ -62,8 +62,15 @@ class ItemsController < ApplicationController
   end
 
   def search
-     @items = Item.search(params[:search])
-     @types = Type.all
+    types = Type.all
+    @types_array = []
+     types.each do |type| 
+      @types_array.push([type.title, type.id])
+    end  
+  end
+
+  def do_search
+    @items = Item.search(params[:search], params[:type_id], params[:and_or])
   end
 
   private
