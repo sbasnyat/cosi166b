@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
 
   def search
     types = Type.all
-    @types_array = []
+    @types_array = [["None", nil]]
      types.each do |type| 
       @types_array.push([type.title, type.id])
     end  
@@ -84,3 +84,4 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:title, :description, :itemtype)
     end
 end
+
